@@ -65,3 +65,16 @@ with "\[&]() -> bool"
 
 ENDTEST macro calls this lambda funcion and prints the data to UI. The function
 printf() is used for that, so <stdio.h> is needed.
+
+In the end code above looks like this
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+__name_of_test = "Sum of 2 numbers  __result = [&]() -> bool
+{
+	// we do the stuff here
+
+	return Sum(2, 2) == 4;
+}() PRINT_RESULT()
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
