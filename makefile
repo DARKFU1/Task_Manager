@@ -2,17 +2,17 @@
 
 SRCS_DIR = sources
 
-SRCS = ${SRCS_DIR}/main.cpp
+SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: ${OBJS}
 	@echo "Building..."
-	@g++ $^ -o out
+	@g++ -g $^ -o out
 	@echo "Done!"
 
 %.o: %.cpp
 	@echo "Building file: "$<"..."
-	@g++ -c $< -o $@
+	@g++ -c -g $< -o $@
 
 clean:
 	@echo "" > ${SRCS_DIR}/*.o

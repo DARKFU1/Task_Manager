@@ -3,24 +3,26 @@
 
 // Realisation of Forward-list.
 
+template <typename T>
 class TList
 {
 	struct Node
 	{
 		Node* pNext;
-		Node* pPrev;
-
 		T value;
 
 		Node(T value);
-		Node(T value, Node* pPrev, Node* pNext);
 	};
 
 	Node* head;
+	int count;
 
 public:
 	void Add(T value);
 	void Remove(int id);
+
+	TList(T value);
+
 	T& Get(int id);
 	T& operator[](int id);
 
