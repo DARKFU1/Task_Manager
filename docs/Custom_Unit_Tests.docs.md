@@ -75,6 +75,6 @@ __name_of_test = "Sum of 2 numbers"; __result = [&]() -> bool
 	// we do the stuff here
 
 	return Sum(2, 2) == 4;
-}() PRINT_RESULT()
+}(); PRINT_RESULT()
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
