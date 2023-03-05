@@ -2,16 +2,16 @@ Cust_Unit_Tests.h ( located in .../headers/ ) Is header file for writing unit te
 
 What it has to offer?
 
-Well, first there are private variables that I would not reccomend to touch
-I'm talking about "__result" and "__count_of_tabs".
-They are needed for unit tests to function.
+Well, first there are private variables that I would not reccomend to touch.
+I'm talking about `__result` and `__name_of_test`.
+They are needed for unit tests to function properly.
 
 The way this works:
 
 --------------------------------------------------------------------------------
 
-we have some function that we want to test.
-let's imagine that's the Sum function.
+We have some function that we want to test.
+Let's imagine that's the Sum function.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 int Sum(int a, int b)
@@ -21,10 +21,10 @@ int Sum(int a, int b)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-we expect, that if this function works properly, output of 2 + 2 will be 4
-so let's write the test
+We expect, that if this function works properly, output of 2 + 2 will be 4
+so let's write the test.
 
-the test begins with pre-defined "TEST(name)" macro, in which name is the
+Whe test begins with pre-defined "TEST(name)" macro, in which name is the
 name of test to be displayed
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,6 +61,7 @@ our code.
 		HOW THIS WORKS ON THE SOURCE LEVEL?
 
 TEST macro transfers code that will be written into lambda by replacing it
-with "[&]() -> bool"
+with "\[&]() -> bool"
 
-ENDTEST macro calls this lambda funcion and prints the data to UI.
+ENDTEST macro calls this lambda funcion and prints the data to UI. The function
+printf() is used for that, so <stdio.h> is needed.
