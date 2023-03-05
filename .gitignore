@@ -1,0 +1,4 @@
+token
+out
+*.o
+*.temp
