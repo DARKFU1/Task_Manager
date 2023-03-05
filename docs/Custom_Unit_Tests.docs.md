@@ -63,4 +63,5 @@ our code.
 TEST macro transfers code that will be written into lambda by replacing it
 with "\[&]() -> bool"
 
-ENDTEST macro calls this lambda funcion and prints the data to UI.
+ENDTEST macro calls this lambda funcion and prints the data to UI. The function
+printf() is used for that, so <stdio.h> is needed.
