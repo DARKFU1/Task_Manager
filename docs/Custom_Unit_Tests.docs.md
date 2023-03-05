@@ -3,7 +3,7 @@ Cust_Unit_Tests.h ( located in .../headers/ ) Is header file for writing unit te
 What it has to offer?
 
 Well, first there are private variable that I would not reccomend to touch.
-I'm talking about `__result"`.
+I'm talking about `__result`.
 It is needed for unit tests to function.
 
 The way this works:
