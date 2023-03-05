@@ -70,7 +70,7 @@ In the end code above looks like this
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-__name_of_test = "Sum of 2 numbers  __result = [&]() -> bool
+__name_of_test = "Sum of 2 numbers" __result = [&]() -> bool
 {
 	// we do the stuff here
 
