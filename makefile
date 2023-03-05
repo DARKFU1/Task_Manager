@@ -12,7 +12,7 @@ all: ${OBJS}
 
 %.o: %.cpp
 	@echo "Building file: "$<"..."
-	@g++ -c sources/$< -o $@
+	@g++ -c $< -o $@
 
 clean:
 	@echo "" > *.o
