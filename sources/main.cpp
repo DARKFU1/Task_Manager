@@ -1,16 +1,26 @@
 #include "../headers/general.hpp"
 
-int Sum(const int& a, const int& b)
+inline int Sum(const int& a, const int& b)
 {
 	return a + b;
 }
 
 int main(int argc, char** argv)
 {
-	TEST("Sum of two numbers")
+	for(int i = 0; i < argc; ++i)
 	{
-		return Sum(2, 2) == 4;
-	}ENDTEST()
+		if(!strcmp(argv[i], "--test")) // if argv[i] == "--test"
+		{
+			printf("[Unit tests]\n\n");
+
+			TEST("Example")
+			{
+				return Sum(2, 2) == 4;
+			}ENDTEST()
+
+			printf("\n[End of unit tests];\n\n");
+		}// unit tests were here.
+	}
 
 	return 0;
 }

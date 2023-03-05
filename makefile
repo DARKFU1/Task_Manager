@@ -1,4 +1,4 @@
-.PHONY: all clean rebuild
+.PHONY: all clean rebuild call_unit_tests
 
 SRCS_DIR = sources
 
@@ -15,8 +15,11 @@ all: ${OBJS}
 	@g++ -c $< -o $@
 
 clean:
-	@echo "" > *.o
-	@rm *.o # created file *.o so if no .o files met, will not be any error.
+	@echo "" > ${SRCS_DIR}/*.o
+	@rm ${SRCS_DIR}/*.o # created file *.o so if no .o files met, will not be any error.
 	@echo "Cleaned!"
 
-rebuild: clean all
+call_unit_tests:
+	./out --test
+
+rebuild: clean all call_unit_tests
