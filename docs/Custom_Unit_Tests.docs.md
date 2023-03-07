@@ -70,11 +70,22 @@ In the end code above looks like this
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-__name_of_test = "Sum of 2 numbers"; __result = [&]() -> bool
+__name_of_test = "Sum of 2 numbers"; \__\result = [&]() -> bool
 {
 	// we do the stuff here
 
 	return Sum(2, 2) == 4;
 }(); PRINT_RESULT()
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+--------------------------------------------------------------------------------
+NOTE:
+	Right now there's a function that calls all unit tests declared in
+	`headers/Tests.hpp` file and defined in 'sources/Tests.cpp"
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// headers/Tests.hpp
+	
+void LaunchUnitTests();
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

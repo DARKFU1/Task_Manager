@@ -9,7 +9,8 @@
 #include <iostream>
 // C++ libs
 
-#include "Cust_Unit_Tests.h"
-#include "TList.h"
+#include "Cust_Unit_Tests.hpp"
+#include "TList.hpp"
+#include "Tests.hpp"
 // Custom files
 #endif

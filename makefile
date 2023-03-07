@@ -2,7 +2,7 @@
 
 SRCS_DIR = sources
 
-SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp
+SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: ${OBJS}

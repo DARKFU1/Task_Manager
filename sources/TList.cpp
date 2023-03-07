@@ -1,5 +1,5 @@
 #include "../headers/general.hpp"
-#include "../headers/TList.h"
+#include "../headers/TList.hpp"
 
 template<typename T>
 TList<T>::Node::Node(T value)
