@@ -12,5 +12,13 @@
 #include "Cust_Unit_Tests.hpp"
 #include "TList.hpp"
 #include "Tests.hpp"
+#include "Task.hpp"
 // Custom files
+
+#define DEBUG
+
+#ifdef DEBUG
+	#define LOG
+#endif
+
 #endif
