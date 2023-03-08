@@ -76,17 +76,15 @@ int menu::Start()
 
 		if(input == 'a' || input == 'h') {}
 		if(input == 'd' || input == 'l') {}
-
 		if(input == 'w' || input == 'k')
 	       	{
 			if(cursor_position > 0) --cursor_position;
 		}
-
+		
 		if(input == 's' || input == 'j')
 	       	{
 			if(cursor_position < count - 1) ++cursor_position;
 		}
-
 	}
 
 	echo();
