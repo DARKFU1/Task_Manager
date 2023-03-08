@@ -67,14 +67,14 @@ void LaunchUnitTests()
 		Task a("Test task", TaskState::MAX_PRIORITY | TaskState::NOT_DONE);
 		Task c("Some description", TaskState::MEDIUM_PRIORITY | TaskState::IN_PROGRESS);	
 
-		FILE* data_file_w = fopen("data/data.txt", "w");
+		FILE* data_file_w = fopen("data/test.txt", "w");
 
 		a.WriteToFile(data_file_w);
 		c.WriteToFile(data_file_w);
 
 		fclose(data_file_w);
 
-		FILE* data_file_r = fopen("data/data.txt", "r");
+		FILE* data_file_r = fopen("data/test.txt", "r");
 		
 		Task d(data_file_r);
 		Task b(data_file_r);
