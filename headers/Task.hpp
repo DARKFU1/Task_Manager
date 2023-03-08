@@ -16,6 +16,7 @@ enum TaskState
 	DONE = 64,
 	IN_PROGRESS = 128,
 	NOT_DONE = 256,
+	DELETE_Q = 512,
 };
 
 
@@ -26,6 +27,8 @@ class Task
 	uint32_t data;
 
 public:
+	// TODO: void Print();
+	
 	void WriteToFile(FILE* data_file); // Puts data into the file.
 
 	Task(FILE* data_file); // Gets info from file.

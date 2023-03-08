@@ -7,12 +7,15 @@
 // C libs
 
 #include <iostream>
+#include <ncurses.h>
 // C++ libs
 
 #include "Cust_Unit_Tests.hpp"
 #include "TList.hpp"
 #include "Tests.hpp"
 #include "Task.hpp"
+#include "menu.hpp"
+
 // Custom files
 
 #define DEBUG

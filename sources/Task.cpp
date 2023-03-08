@@ -13,7 +13,7 @@ static inline unsigned int GetPriorityMask()
 static inline unsigned int GetProgressMask()
 {
 	return TaskState::NOT_DONE | TaskState::IN_PROGRESS |
-		TaskState::DONE;
+		TaskState::DONE | TaskState::DELETE_Q;
 }
 static void NullPriority(uint32_t& data)
 {
