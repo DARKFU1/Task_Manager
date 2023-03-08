@@ -7,16 +7,15 @@ int main(int argc, char** argv)
 		if(!strcmp(argv[i], "--test")) 
 		{
 			LaunchUnitTests();
+			LaunchIntegrationTests();
 		}
 
 		if(!strcmp(argv[i], "-t"))
 		{
 			LaunchUnitTests();
+			LaunchIntegrationTests();
 		}
 	}
-
-	TList<int> a;
-	a.Add(1);	
 
 	return 0;
 }

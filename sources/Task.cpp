@@ -1,29 +1,8 @@
 #include "../headers/general.hpp"
 #include "../headers/Task.hpp"
 
-
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Static functions that do routine
-
-static void log(const char* info)
-{
-#ifdef LOG
-	printf(info);
-#endif
-}
-
-static void log(int data)
-{
-#ifdef LOG
-	printf("%i", data);
-#endif
-}
-
-static void log(uint32_t data)
-{
-#ifdef LOG
-	printf("%u", data);
-#endif
-}
 
 static inline unsigned int GetPriorityMask()
 {
@@ -46,9 +25,83 @@ static void NullProgress(uint32_t& data)
 	data = data and (not GetProgressMask() );
 }
 
+static void FileReadDescription(char* buffer,FILE* data_file)
+{
+	int symbol_id = 0;
+	bool quotes_open = false;
+	
+	while(true)
+	{
+		buffer[symbol_id] = getc(data_file);
+
+		if(quotes_open && buffer[symbol_id] == '~') // if end
+		{
+			buffer[++symbol_id] = '\0';
+			break;
+		}
+
+		if(!quotes_open && buffer[symbol_id] == '~') // if start
+		{
+			quotes_open = true;
+			continue;
+		}
+
+		// else
+		++symbol_id;
+	}
+
+	return;
+}
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Class functions
+
+void Task::WriteToFile(FILE* data_file)
+{
+	fprintf(data_file, "&data& %u ", this->data);
+	fprintf(data_file, "&description& ~%s~\n", this->description);
+
+	// data is presented like that:
+	// &data& 65 &desctiption& ~description~
+}
+
+Task& Task::operator=(const Task& other)
+{
+	this->data = other.data;
+
+	this->description = new char[strlen(other.description)];
+	strcpy(this->description, other.description);
+
+	return *this;
+}
+
+Task::Task(const Task& other)
+{
+	this->data = other.data;
+	
+	this->description = new char[strlen(other.description)];
+	strcpy(this->description, other.description);
+}
+
+Task::Task(FILE* data_file)
+{
+	this->description = new char[512];
+
+	char buffer[512];
+
+	fscanf(data_file, "%s", buffer);
+	if(!strcmp(buffer, "&data&"))
+	{
+		fscanf(data_file, "%u", &this->data);
+		// scan data.
+	}
+
+	fscanf(data_file, "%s", buffer);
+	if(!strcmp(buffer, "&description&"))
+	{
+		FileReadDescription(this->description, data_file);
+	}
+}
 
 Task::Task(const char* description, const uint32_t& data)
 {
@@ -67,6 +120,27 @@ Task::Task()
 Task::~Task()
 {
 	delete[] this->description;
+}
+
+// compares ONLY priorities
+bool Task::operator==(Task& other)
+{
+	return this->GetPriority() == other.GetPriority();
+}
+
+// compares ONLY priorities
+bool Task::operator>(Task& other)
+{
+	return this->GetPriority() < other.GetPriority();
+	// quick explanation: the less the number returned by that function, the
+	// bigger the priority ( you can watch the enum in ../headers/Task.hpp
+}
+
+// compares ONLY priorities
+bool Task::operator<(Task& other)
+{
+	return !( *this > other); // already have the '>' operator, so no need
+				  // to write code again
 }
 
 char* Task::GetDescription()

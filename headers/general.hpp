@@ -21,4 +21,6 @@
 	#define LOG
 #endif
 
+void UpdateFile(FILE* file, const char* path, const char* mode);
+
 #endif

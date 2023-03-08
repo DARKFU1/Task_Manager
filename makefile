@@ -2,18 +2,20 @@
 
 SRCS_DIR = sources
 
-SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp
+SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp ${SRCS_DIR}/UpdateFile.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 COMPILER_FLAGS = -g
 
+first_time_launch: make_dirs all call_unit_tests
+
 all: ${OBJS}
-	@echo "Building..."
+	@echo "Building project..."
 	@g++ ${COMPILER_FLAGS} $^ -o out
 	@echo "Done!"
 
 %.o: %.cpp
-	@echo "Building file: "$<"..."
+	@echo "Compiling file: "$<"..."
 	@g++ -c $< ${COMPILER_FLAGS} -o $@
 
 clean:
@@ -25,3 +27,6 @@ call_unit_tests:
 	./out --test
 
 rebuild: clean all call_unit_tests
+
+make_dirs:
+	-@mkdir ./data

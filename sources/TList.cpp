@@ -125,3 +125,4 @@ TList<T>::~TList()
 }
 
 template class TList<int>;
+template class TList<Task>;

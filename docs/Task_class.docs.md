@@ -28,3 +28,20 @@ Methods with which we are going to communicate with the object are simple:
 The overloaded comparation operators ( >, < ) compare priorities of the objects.
 
 --------------------------------------------------------------------------------
+
+Operator '=' has been overloaded. So copy ctor has.
+
+Two new operations: WriteToFile(file ptr) and ctor that takes file as argument
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WriteToFile(FILE\* data_file)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Puts data in the file. After that you can open this file in read mode and put it
+in the ctor.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+File(FILE\* data_file);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+And it will read the data from file and write it into itself.

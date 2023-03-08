@@ -4,5 +4,6 @@
 #define TESTS_H
 
 void LaunchUnitTests();
+void LaunchIntegrationTests();
 
 #endif
