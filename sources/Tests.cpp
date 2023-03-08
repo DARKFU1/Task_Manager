@@ -99,7 +99,7 @@ void LaunchIntegrationTests()
 {
 	printf("-------------------------------\n");
 	printf("  	Integration tests      \n");
-	printf("-------------------------------\n");
+	printf("-------------------------------\n\n");
 
 	// tests below that line
 	// -------------------------------------------
@@ -130,7 +130,7 @@ void LaunchIntegrationTests()
 	//---------------------------------------------
 	// tests higher this line
 
-	printf("-------------------------------\n");
+	printf("\n-------------------------------\n");
 	printf("  Integration Tests Are Done  \n");
 	printf("-------------------------------\n");
 

@@ -2,7 +2,7 @@
 
 SRCS_DIR = sources
 
-SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp ${SRCS_DIR}/UpdateFile.cpp
+SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 COMPILER_FLAGS = -g
