@@ -13,4 +13,4 @@ The UI is text-based, will look something like this:
 
 If you want to know more about the UI, you can do this in docs/UI.docs.md
 
-* Developing is in progress *
+* Developing is in progress
