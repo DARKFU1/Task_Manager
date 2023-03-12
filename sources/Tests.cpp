@@ -8,21 +8,18 @@ void LaunchUnitTests()
 
 			TEST("FINE state")
 			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(500));
+
 				return true;
 			}ENDTEST();
 
 			TEST("FAIL state")
 			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(500));
+				
 				return false;
 			}ENDTEST();
 	
-			TEST("Imitating time-consuming function")
-			{
-				std::this_thread::sleep_for(std::chrono::milliseconds(6000));
-
-				return true;
-			}ENDTEST();
-
 	END_LAYER();
 
 	ADD_LAYER("Unit_Tests");
