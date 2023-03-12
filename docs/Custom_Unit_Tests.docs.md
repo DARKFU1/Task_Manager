@@ -130,6 +130,7 @@ Unit Tests
 
 By the way, you've just seen the new feature: time.
 It is done with `std::chrono`, so it's not 100% accurate, but I guess that'll work
+NODE: us = microseconds.
 
 Another feature is animation when function takes a lot of time to execute, you'll
 see that when you're gonna need that.
