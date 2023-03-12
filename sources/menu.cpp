@@ -94,3 +94,10 @@ int menu::Start()
 
 	return count;
 }
+
+menu::menu() // default ctor
+{
+	this->options = nullptr;
+	this->cursor_position = 0;
+	this->count = 0;
+}	

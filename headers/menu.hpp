@@ -6,13 +6,16 @@
 
 class menu
 {
+protected:
 	int cursor_position;
 	int count;
 	char** options;
 
 public:
+	virtual int Start();
 	menu(int count, ...);
-	int Start();
+
+	menu();
 };
 
 #endif

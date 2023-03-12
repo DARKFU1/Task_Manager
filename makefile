@@ -2,10 +2,10 @@
 
 SRCS_DIR = sources
 
-SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp  ${SRCS_DIR}/menu.cpp
+SRCS = ${SRCS_DIR}/main.cpp ${SRCS_DIR}/TList.cpp ${SRCS_DIR}/Tests.cpp ${SRCS_DIR}/Task.cpp  ${SRCS_DIR}/menu.cpp  ${SRCS_DIR}/Cust_Unit_Tests.cpp
 OBJS = $(SRCS:.cpp=.o)
 
-COMPILER_FLAGS = -g -lncurses
+COMPILER_FLAGS = -g -lncurses -Wwrite-strings
 
 first_time_launch: make_dirs all call_unit_tests
 

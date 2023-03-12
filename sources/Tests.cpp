@@ -2,108 +2,123 @@
 
 void LaunchUnitTests()
 {
-	printf("--------------------------------\n");
-	printf("	Unit Tests		\n");
-	printf("--------------------------------\n\n");
-
-	/// tests under that line.
-
-	//Tlist;	
-	TEST("[List] Adding and getting element")
-	{
-		TList<int> tl;
-		tl.Add(1);
-		tl.Add(2);
-
-		return tl[0] == 1 && tl[1] == 2;
-	}ENDTEST();
+	printf("-----------------------------------------------------------------\n");
 	
-	TEST("[List] Removing element")
-	{
-		TList<int> tl;
-		tl.Add(8);
-		tl.Add(9);
+	ADD_LAYER("Example");
 
-		tl.Remove(0);
+			TEST("FINE state")
+			{
+				return true;
+			}ENDTEST();
 
-		return tl.Get(0) == 9;
-	}ENDTEST();
-	// TList;
+			TEST("FAIL state")
+			{
+				return false;
+			}ENDTEST();
+	
+			TEST("Imitating time-consuming function")
+			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(6000));
 
-	// Task
-	TEST("[Task] Creating")
-	{
-		Task t("Test task", TaskState::NOT_DONE | TaskState::MAX_PRIORITY);
+				return true;
+			}ENDTEST();
 
-		return t.GetProgress() == TaskState::NOT_DONE && t.GetPriority() == TaskState::MAX_PRIORITY;
+	END_LAYER();
 
-	}ENDTEST();
+	ADD_LAYER("Unit_Tests");
 
-	TEST("[Task] Changing values")
-	{
-		Task t("Test task", TaskState::NOT_DONE | TaskState::MAX_PRIORITY);
+		ADD_LAYER("List");	
+
+		TEST("Adding and getting element")
+		{
+			TList<int> tl;
+			tl.Add(1);
+			tl.Add(2);
+
+			return tl[0] == 1 && tl[1] == 2;
+		}ENDTEST();
+	
+		TEST("Removing element")
+		{
+			TList<int> tl;
+			tl.Add(8);
+			tl.Add(9);
+	
+			tl.Remove(0);
+	
+			return tl.Get(0) == 9;
+		}ENDTEST();
+
+		END_LAYER(); // List
+
+		ADD_LAYER("Task");
+
+		TEST("Creating")
+		{
+			Task t("Test task", TaskState::NOT_DONE | TaskState::MAX_PRIORITY);
+
+			return t.GetProgress() == TaskState::NOT_DONE && t.GetPriority() == TaskState::MAX_PRIORITY;
+
+		}ENDTEST();
+
+		TEST("Changing values")
+		{
+			Task t("Test task", TaskState::NOT_DONE | TaskState::MAX_PRIORITY);
 		
-		t.SetPriority(TaskState::MEDIUM_PRIORITY);
-		t.SetProgress(TaskState::IN_PROGRESS);
+			t.SetPriority(TaskState::MEDIUM_PRIORITY);
+			t.SetProgress(TaskState::IN_PROGRESS);
 
-		bool is_priority_fine = t.GetPriority() == TaskState::MEDIUM_PRIORITY;
-		bool is_progress_fine = t.GetProgress() == TaskState::IN_PROGRESS;
+			bool is_priority_fine = t.GetPriority() == TaskState::MEDIUM_PRIORITY;
+			bool is_progress_fine = t.GetProgress() == TaskState::IN_PROGRESS;
 
-		return is_progress_fine;
+			return is_progress_fine;
 
-	}ENDTEST();
+		}ENDTEST();
 
-	TEST("[Task] Comparing two tasks")
-	{
-		Task a("Test task", TaskState::MAX_PRIORITY);
-		Task b("Test task", TaskState::MEDIUM_PRIORITY);
-		Task c("Test tast", TaskState::LOW_PRIORITY);
+		TEST("Comparing two tasks")
+		{
+			Task a("Test task", TaskState::MAX_PRIORITY);
+			Task b("Test task", TaskState::MEDIUM_PRIORITY);
+			Task c("Test tast", TaskState::LOW_PRIORITY);
 
-		return a > b && b > c && a > c && b < a && !(a < c) && c < a;
-	}ENDTEST();
+			return a > b && b > c && a > c && b < a && !(a < c) && c < a;
+		}ENDTEST();
 
-	TEST("[TASK] Filework")
-	{
-		Task a("Test task", TaskState::MAX_PRIORITY | TaskState::NOT_DONE);
-		Task c("Some description", TaskState::MEDIUM_PRIORITY | TaskState::IN_PROGRESS);	
+		TEST("Filework")
+		{
+			Task a("Test task", TaskState::MAX_PRIORITY | TaskState::NOT_DONE);
+			Task c("Some description", TaskState::MEDIUM_PRIORITY | TaskState::IN_PROGRESS);	
+	
+			FILE* data_file_w = fopen("data/test.txt", "w");
 
-		FILE* data_file_w = fopen("data/test.txt", "w");
+			a.WriteToFile(data_file_w);
+			c.WriteToFile(data_file_w);
 
-		a.WriteToFile(data_file_w);
-		c.WriteToFile(data_file_w);
+			fclose(data_file_w);
 
-		fclose(data_file_w);
-
-		FILE* data_file_r = fopen("data/test.txt", "r");
+			FILE* data_file_r = fopen("data/test.txt", "r");
 		
-		Task d(data_file_r);
-		Task b(data_file_r);
+			Task d(data_file_r);
+			Task b(data_file_r);
 
-		fclose(data_file_r);
+			fclose(data_file_r);
 
-		return (a == d) && (c == b);
+			return (a == d) && (c == b);
 
-	}ENDTEST();
+		}ENDTEST();
+
+	END_LAYER(); // Task
 
 
-	/// tests higher this line.
-	printf("\n--------------------------------\n");
-	printf("      Unit Tests Are Done!	\n");
-	printf("--------------------------------\n\n");
-
-	for(int i = 0; i < 20; ++i) { printf("~~~~"); }
-	printf("\n");
+	END_LAYER(); // Unit tests
 }
 
 void LaunchIntegrationTests()
 {
-	printf("-------------------------------\n");
-	printf("  	Integration tests      \n");
-	printf("-------------------------------\n\n");
+	ADD_LAYER("Integration Tests");
 
-	// tests below that line
-	// -------------------------------------------
-	
+	ADD_LAYER("List + task");
+
 	TEST("[LIST + TASK] Getting from file")
 	{
 		TList<Task> list;
@@ -127,12 +142,10 @@ void LaunchIntegrationTests()
 
 	}ENDTEST();
 
+	END_LAYER(); // List + Task
+ 
 	//---------------------------------------------
 	// tests higher this line
 
-	printf("\n-------------------------------\n");
-	printf("  Integration Tests Are Done  \n");
-	printf("-------------------------------\n");
-
-	printf("\n\n");
+	END_LAYER(); // Integration tests
 }

@@ -1,5 +1,7 @@
 #include "../headers/general.hpp"
 
+#define UPDATE_FILE(file, path, mode) fclose(path); file = fopen(path, mode);
+
 int main(int argc, char** argv)
 {
 	for(int i = 0; i < argc; ++i)

@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include <thread> // for std::thread and std::chrono
 // C++ libs
 
 #include "Cust_Unit_Tests.hpp"
