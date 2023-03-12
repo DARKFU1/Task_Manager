@@ -104,3 +104,32 @@ void LaunchIntegrationTests();
 It also calls automaticly.
 	
 --------------------------------------------------------------------------------
+
+UPDATE:
+
+* Added Layers functionality.
+
+If you use `ADD_LAYER(name)` and `END_LAYER()` macros:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ADD_LAYER("Unit Tests")
+	ADD_LAYER("Example")
+		TEST("EXAMPLE TEST") { return true; }ENDTEST();
+	END_LAYER();
+END_LAYER();
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You'll have a beautiful UI like that:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unit Tests
+	Example
+		[  OK  ] EXAMPLE TEST				| time: time us
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By the way, you've just seen the new feature: time.
+It is done with `std::chrono`, so it's not 100% accurate, but I guess that'll work
+
+Another feature is animation when function takes a lot of time to execute, you'll
+see that when you're gonna need that.
