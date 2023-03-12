@@ -20,7 +20,7 @@ void PrintLoadingAnimation(int tabs_count, bool* is_done, char** name);
 
 #define __START_TIME() start = std::chrono::high_resolution_clock::now();
 #define __FINISH_TIME() finish = std::chrono::high_resolution_clock::now();
-#define __PRINT_TIME() __PRINT_TABS_UNTIL_END_OF_SCREEN(); printf("| time: %d us", std::chrono::duration_cast<std::chrono::microseconds>(finish - start))
+#define __PRINT_TIME()  __PRINT_TABS_UNTIL_END_OF_SCREEN(); if(finish - start < std::chrono::milliseconds(1)) { printf("| time: < 1 ms"); } else{printf("| time: %d ms", std::chrono::duration_cast<std::chrono::milliseconds>(finish - start)); }
 
 #define __PRINT_TABS() for(int i = 0; i < __tabs_count; ++i) { printf("   "); }
 #define __CALCULATE_TABS_UNTIL_END_OF_SCREEN(name) (80 - 4 * __tabs_count - strlen(name)) / 8
